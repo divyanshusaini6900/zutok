@@ -707,6 +707,7 @@ function App() {
                           : "bg-transparent hover:bg-primary/10"
                       }`}
                       variant={plan.popular ? "default" : "outline"}
+                      {...(plan.popular ? { onClick: () => window.open('https://wa.me/918393870081', '_blank') } : {})}
                     >
                       {plan.popular ? "Contact Us" : "Choose Plan"}
                     </Button>
