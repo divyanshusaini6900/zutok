@@ -27,13 +27,14 @@ const useIntersectionObserver = (options = {}) => {
       setIsIntersecting(entry.isIntersecting);
     }, options);
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current; // Store ref value in a variable
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [options]);
@@ -1001,12 +1002,15 @@ function App() {
                 <ul className="space-y-2 text-muted-foreground">
                   {section.links.map((link, i) => (
                     <li key={i}>
-                      <a
-                        href="#"
-                        className="hover:text-foreground transition-all duration-500 hover:translate-x-1 inline-block hover:scale-105"
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          // Handle navigation or keep as placeholder
+                        }}
+                        className="hover:text-foreground transition-all duration-500 hover:translate-x-1 inline-block hover:scale-105 text-left w-full"
                       >
                         {link}
-                      </a>
+                      </button>
                     </li>
                   ))}
                 </ul>
